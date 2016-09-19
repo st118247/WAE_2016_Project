@@ -55,5 +55,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :test do
   gem 'simplecov', :require => false
-  gem 'simplecov-rcov', :require => false
+  gem 'simplecov-rcov'
 end
+
+gem 'nokogiri'
