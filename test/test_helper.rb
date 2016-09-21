@@ -1,12 +1,10 @@
-
-# require 'simplecov-rcov'
-# SimpleCov.formatters = [
-#     SimpleCov::Formatter::HTMLFormatter,
-#     SimpleCov::Formatter::RcovFormatter
-# ]
-
 ENV['RAILS_ENV'] ||= 'test'
 require 'simplecov'
+require 'simplecov-rcov'
+SimpleCov.formatters = [
+    SimpleCov::Formatter::HTMLFormatter,
+    SimpleCov::Formatter::RcovFormatter
+]
 SimpleCov.start
 # Previous content of test helper now starts here
 
