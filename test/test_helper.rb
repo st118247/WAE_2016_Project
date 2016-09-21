@@ -1,3 +1,5 @@
+
+# Previous content of test helper now starts here
 ENV['RAILS_ENV'] ||= 'test'
 require 'simplecov'
 require 'simplecov-rcov'
@@ -5,8 +7,7 @@ SimpleCov.formatters = [
     SimpleCov::Formatter::HTMLFormatter,
     SimpleCov::Formatter::RcovFormatter
 ]
-SimpleCov.start 'rails'
-# Previous content of test helper now starts here
+SimpleCov.start
 
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
