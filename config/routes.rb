@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :quotations
   get 'basics2/puresql'
 
   get 'basics1/divide-by-zero'

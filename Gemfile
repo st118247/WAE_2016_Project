@@ -58,3 +58,4 @@ group :test do
   gem 'simplecov-rcov'
 end
 gem 'nokogiri'
+gem 'rails-controller-testing'
