@@ -1,14 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'basics2/puresql'
-
-  get 'basics1/divide-by-zero'
-  get 'basics1/top-ten-youtube'
-
-  get 'basics2/index'
-
-  get 'basics1/index'
-
   root 'home#index'
   get 'home/index'
 
