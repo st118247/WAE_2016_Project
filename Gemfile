@@ -65,3 +65,4 @@ group :test do
 end
 gem 'nokogiri'
 gem 'rails-controller-testing'
+gem 'devise'
