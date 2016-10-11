@@ -56,6 +56,12 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 group :test do
   gem 'simplecov', :require => false
   gem 'simplecov-rcov'
+  gem 'cucumber-rails', :require => false
+# database_cleaner is not required, but highly recommended
+  gem 'database_cleaner'
+  gem 'factory_girl_rails'
+  gem 'launchy'
+  gem 'rspec-rails'
 end
 gem 'nokogiri'
 gem 'rails-controller-testing'
