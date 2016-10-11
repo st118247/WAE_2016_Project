@@ -1,5 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-# before_action :configure_sign_up_params, only: [:create]
+before_action :configure_sign_up_params, only: [:create]
 # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
@@ -9,10 +9,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    if(params[:user][:officer_role_id] == '-1')
-      @officer_role = OfficerRole.create(role:params[:new_role])
-      params[:user][:officer_role_id] = @officer_role.id
-    end
     super
   end
 
@@ -43,9 +39,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
-  # end
+  def configure_sign_up_params
+    # devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
+
+    if(params[:user][:officer_role_id] == '-1')
+      @officer_role = OfficerRole.create(role:params[:new_role])
+      params[:user][:officer_role_id] = @officer_role.id
+    end
+    devise_parameter_sanitizer.permit(:sign_up) do |user_params|
+      user_params.permit(:email, :password, :password_confirmation, :staff_id, :name, :surname, :tel, :officer_role_id, :status)
+    end
+    # devise_parameter_sanitizer.permit(:sign_up, keys: [:officer_role_id])
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
