@@ -1,7 +1,7 @@
 # config valid only for current version of Capistrano
 lock '3.6.1'
 
-set :application, 'wae-project'
+set :application, 'problemset'
 set :repo_url, 'https://github.com/mamilkew/wae-problemset.git'
 set :passenger_restart_with_touch, true
 set :'rbenv_ruby', '2.3.1'
