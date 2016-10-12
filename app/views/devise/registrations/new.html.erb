@@ -22,7 +22,7 @@
     </div>
 
     <div class="field">
-      <%= f.label :staff_id %><br/>
+      <%= f.label 'Staff ID' %><br/>
       <%= f.text_field :staff_id %>
     </div>
     <div class="field">
@@ -37,19 +37,19 @@
       <%= f.label "Phone Number" %><br/>
       <%= f.text_field :tel %>
     </div>
-    <div class="field">
-      <%= f.label :officer_role_id %>
-      <%= f.collection_select(:officer_role_id, OfficerRole.all.to_a.uniq(&:id)+[OfficerRole.new(id:-1, role: "New Role")], :id, :role) %>
-      <%= text_field_tag :new_role %>
-    </div>
-    <div class="field">
+    <!--<div class="field">-->
+      <!--<%= f.label :officer_role_id %>-->
+      <!--<%= f.collection_select(:officer_role_id, OfficerRole.all.to_a.uniq(&:id)+[OfficerRole.new(id:-1, role: "New Role")], :id, :role) %>-->
+      <!--<%= text_field_tag :new_role %>-->
+    <!--</div>
+    <!--<div class="field">
       <%= f.label :status %><br/>
-      <%= f.text_field :status %>
-    </div>
+      <!--<%= f.select(:status, ['active', 'non-active']) %>-->
+    <!--</div>-->
 
     <div class="actions">
       <%= f.submit "Sign up" %>
     </div>
   <% end %>
-
-<%= render "devise/shared/links" %>
+<%= link_to "Back", :back %>
+<!--<%= render "devise/shared/links" %>-->

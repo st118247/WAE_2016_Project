@@ -1,6 +1,6 @@
 class Users::RegistrationsController < Devise::RegistrationsController
 before_action :configure_sign_up_params, only: [:create]
-# before_action :configure_account_update_params, only: [:update]
+before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
   # def new
@@ -41,11 +41,15 @@ before_action :configure_sign_up_params, only: [:create]
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
     # devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
-
-    if(params[:user][:officer_role_id] == '-1')
-      @officer_role = OfficerRole.create(role:params[:new_role])
+    if (OfficerRole.find_by_role('NoRole').nil?)
+    # if(params[:user][:officer_role_id] == '-1')
+      @officer_role = OfficerRole.create(role:'NoRole')
+      params[:user][:officer_role_id] = @officer_role.id
+    else
+      @officer_role = OfficerRole.find_by_role('NoRole')
       params[:user][:officer_role_id] = @officer_role.id
     end
+    params[:user][:status] = 'active'
     devise_parameter_sanitizer.permit(:sign_up) do |user_params|
       user_params.permit(:email, :password, :password_confirmation, :staff_id, :name, :surname, :tel, :officer_role_id, :status)
     end
@@ -53,9 +57,12 @@ before_action :configure_sign_up_params, only: [:create]
   end
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_account_update_params
-  #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
-  # end
+  def configure_account_update_params
+    # devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
+    devise_parameter_sanitizer.permit(:account_update) do |user_params|
+      user_params.permit(:email, :password, :password_confirmation, :current_password, :staff_id, :name, :surname, :tel, :officer_role_id, :status)
+    end
+  end
 
   # The path used after sign up.
   # def after_sign_up_path_for(resource)
