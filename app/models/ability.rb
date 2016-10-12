@@ -9,10 +9,14 @@ class Ability
     elsif user.manager?
       can :userlist, :administration
       can :activeuser, :administration
+      can :statistics, :administration
     elsif user.staff?
       can :userlist, :administration
+
+      can :statistics, :administration
     else
       can :userlist, :administration
+      can :statistics, :administration
     end
     # Define abilities for the passed in user here. For example:
     #

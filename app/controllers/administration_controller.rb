@@ -1,6 +1,6 @@
 class AdministrationController < ApplicationController
 
-  before_action :authenticate_user!, :except => [:userlist]
+  before_action :authenticate_user!, :except => [:userlist, :statistics]
   # load_and_authorize_resource :only => [:banuser, :activeuser]
   authorize_resource class: false
   def userlist
@@ -44,5 +44,10 @@ class AdministrationController < ApplicationController
         format.html { redirect_to administration_userlist_path, notice: 'User cannot be updated.' }
       end
     end
+  end
+
+  def statistics
+    @user = User.all
+    @role = OfficerRole.all
   end
 end

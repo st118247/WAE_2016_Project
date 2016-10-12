@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'administration/banuser'
   get 'administration/activeuser'
   post 'administration/assignrole'
+  get 'administration/statistics'
 
   devise_for :users, controllers: {
       registrations: 'users/registrations'
