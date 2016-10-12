@@ -141,5 +141,5 @@ Then(/^I should see about statistic of user registration$/) do
   expect(page).to have_content "Total of Admins"
   expect(page).to have_content "Total of Staffs"
   expect(page).to have_content "Total of No role"
-  save_and_open_page
+  # save_and_open_page
 end
