@@ -81,7 +81,7 @@ test: &test
 production:
   <<: *default
   database: problemset_production
-  username: postgres
+  username: problemset
   password: <%= ENV['PROBLEMSET_DATABASE_PASSWORD'] %>
 
 cucumber:
