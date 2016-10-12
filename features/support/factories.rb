@@ -10,8 +10,8 @@ FactoryGirl.define do
     officer_role_id '1'
   end
 
-  factory :officer_role_staff, class: OfficerRole do
-    role 'Staff'
+  factory :officer_no_role, class: OfficerRole do
+    role 'NoRole'
   end
 
   factory :staff, class: User do
