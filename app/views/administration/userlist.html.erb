@@ -7,6 +7,7 @@
     <th>Role</th>
     <th>Status</th>
     <th colspan="3"></th>
+    <th colspan="3"></th>
   </tr>
   </thead>
 
@@ -24,6 +25,17 @@
               <%= link_to 'Active', administration_activeuser_path(:which_user => user.id) %>
           <% end %>
           <%#= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+        <td><% if user_signed_in? %>
+              <% if OfficerRole.find_by_id(current_user.officer_role_id).role == 'Admin' %>
+                  <%= form_tag(administration_assignrole_path,id: user.id, method: "post") do %>
+                      <%= collection_select(:assignRole, :officer_role, OfficerRole.where.not(id: user.officer_role_id).order(id: :desc), :id, :role) %>
+                      <%= hidden_field_tag(:which_user, user.id) %>
+                      <%#= link_to 'Assign Role', administration_assignrole_path(:which_user => user.id, :new_role => :assignRole), method: :post %>
+                      <%= submit_tag('Assign Role') %>
+                <% end %>
+              <% end %>
+          <% end %>
         </td>
         <!--<td><%#= book.publisyher %></td>-->
         <!--<td><%#= link_to 'Show', book %></td>-->

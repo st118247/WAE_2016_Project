@@ -31,4 +31,18 @@ class AdministrationController < ApplicationController
       end
     end
   end
+
+  def assignrole
+    whichuser = params[:which_user]
+    newrole = params[:assignRole][:officer_role]
+    @user = User.find(whichuser)
+    @role = OfficerRole.find(newrole)
+    respond_to do |format|
+      if @user.update(officer_role_id: @role.id)
+        format.html { redirect_to administration_userlist_path, notice: 'User was successfully updated.' }
+      else
+        format.html { redirect_to administration_userlist_path, notice: 'User cannot be updated.' }
+      end
+    end
+  end
 end

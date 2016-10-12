@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'administration/userlist'
   get 'administration/banuser'
   get 'administration/activeuser'
+  post 'administration/assignrole'
 
   devise_for :users, controllers: {
       registrations: 'users/registrations'
