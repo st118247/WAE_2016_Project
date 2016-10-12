@@ -33,7 +33,7 @@ Then(/^I am redirected to the start page$/) do
 end
 
 Then(/^I should see my signed in and a link to sign out$/) do
-  save_and_open_page
+  # save_and_open_page
   expect(page).to have_content "#{@user_admin.email}"
   expect(page).to have_link('Sign out', href: destroy_user_session_path)
 end
@@ -76,7 +76,7 @@ end
 # end
 
 Then(/^I should see my signed in with my role$/) do
-  save_and_open_page
+  # save_and_open_page
   expect(page).to have_content "#{@user_staff.email}"
   expect(page).to have_content "#{@no_role.role}"
 end
