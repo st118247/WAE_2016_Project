@@ -1,9 +1,9 @@
 Given(/^My role is Admin$/) do
-  @role = FactoryGirl.create :officer_role
+  @role_admin = FactoryGirl.create :officer_role_admin
 end
 
 Given(/^I am a admin$/) do
-  @user = FactoryGirl.create :admin
+  @user_admin = FactoryGirl.create :admin
 end
 
 When(/^I visit the Homepage of the Accommodation System$/) do
@@ -23,8 +23,8 @@ Then(/^I see a form to fill in my account$/) do
 end
 
 When(/^I submit the form$/) do
-  fill_in 'Email', with: @user.email
-  fill_in 'Password', with: @user.password
+  fill_in 'Email', with: @user_admin.email
+  fill_in 'Password', with: @user_admin.password
   click_button 'Log in'
 end
 
@@ -34,6 +34,16 @@ end
 
 Then(/^I should see my signed in and a link to sign out$/) do
   save_and_open_page
-  expect(page).to have_content "#{@user.email}"
+  expect(page).to have_content "#{@user_admin.email}"
   expect(page).to have_link('Sign out', href: destroy_user_session_path)
+end
+
+################################################################################
+
+Given(/^I have a new staff$/) do
+  @role_staff = FactoryGirl.create :officer_role_staff
+end
+
+Given(/^I want to add the staff$/) do
+  @user_staff = FactoryGirl.build :staff
 end
