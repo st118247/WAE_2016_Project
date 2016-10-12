@@ -1,4 +1,8 @@
 class AdministrationController < ApplicationController
+
+  before_action :authenticate_user!, :except => [:userlist]
+  # load_and_authorize_resource :only => [:banuser, :activeuser]
+  authorize_resource class: false
   def userlist
     @user = User.all.order('created_at DESC')
     @role = OfficerRole.all

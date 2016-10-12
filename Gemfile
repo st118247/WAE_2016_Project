@@ -66,3 +66,4 @@ end
 gem 'nokogiri'
 gem 'rails-controller-testing'
 gem 'devise'
+gem 'cancancan'
