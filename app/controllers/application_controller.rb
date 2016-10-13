@@ -3,6 +3,6 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = "Access denied - Your role cannot do this action."
-    redirect_to :back
+    redirect_to '/'
   end
 end

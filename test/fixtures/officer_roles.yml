@@ -6,4 +6,12 @@ one:
 
 two:
   id: 2
+  role: 'Manager'
+
+three:
+  id: 3
   role: 'Staff'
+
+four:
+  id: 4
+  role: 'NoRole'

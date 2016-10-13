@@ -12,7 +12,6 @@ class Ability
       can :statistics, :administration
     elsif user.staff?
       can :userlist, :administration
-
       can :statistics, :administration
     else
       can :userlist, :administration
