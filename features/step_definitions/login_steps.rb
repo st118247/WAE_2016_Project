@@ -107,6 +107,7 @@ end
 
 Then(/^I should see all users$/) do
   expect(page).to have_content "#{@user_admin.email}"
+  #save_and_open_page
 end
 
 Given(/^I have a staff user$/) do
@@ -143,3 +144,4 @@ Then(/^I should see about statistic of user registration$/) do
   expect(page).to have_content "Total of No role"
   # save_and_open_page
 end
+

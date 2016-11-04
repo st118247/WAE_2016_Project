@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
 
+  get 'home/public'
+
+  get 'home/staff'
+
+  get 'home/supervisor'
+
+  post 'home/wf_approve'
+  post 'home/wf_reject'
+  get 'home/wf_approve'
+  get 'home/wf_reject'
+
+  resources :housingdetails
   get 'administration/userlist'
   get 'administration/banuser'
   get 'administration/activeuser'
