@@ -12,21 +12,21 @@ set :deploy_to, '/home/deploy/problemset'
 set :scm, :git
 
 set :rbenv_type, :user
-set :'rbenv_ruby', '2.3.1'
-
-
-set :default_env, {
-    'http_proxy'  =>'http://192.41.170.23:3128',
-    'ftp_proxy'   =>'http://192.41.170.23:3128',
-    'https_proxy' =>'http://192.41.170.23:3128'
-
-}
+set :rbenv_ruby, '2.3.1'
+set :repo_tree, 'problemset'
 
 set :keep_releases, 5
 set :stages,['production']
 set :default_stage,'production'
 set :user, 'deploy'
 set :branch,'master'
+
+# Default value for :linked_files is []
+append :linked_files, 'config/database.yml', 'config/secrets.yml'
+
+# Default value for linked_dirs is []
+append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/system'
+
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
@@ -57,4 +57,4 @@ set :branch,'master'
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
 # Default value for keep_releases is 5
-# set :keep_releases, 5
+

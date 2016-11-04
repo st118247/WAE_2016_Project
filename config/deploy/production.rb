@@ -1,13 +1,14 @@
 set :branch, 'master'
 set :rails_env,'production'
+set :deploy_to, '/home/deploy/problemset'
 set :deploy_via, :remote_cache
 
-server 'web2.cs.ait.ac.th',
-       user: 'deploy',
-       roles: %w{app db web},
-       ssh_options: {
-           forward_agent: true
-       }
+# server 'web2.cs.ait.ac.th',
+#        user: 'deploy',
+#        roles: %w{app db web},
+#        ssh_options: {
+#            forward_agent: true
+#        }
 
 
 role :app, %w{deploy@web2.cs.ait.ac.th}
@@ -74,11 +75,11 @@ set :default_env,{
 #
 # Global options
 # --------------
-#  set :ssh_options, {
-#    keys: %w(/home/rlisowski/.ssh/id_rsa),
-#    forward_agent: false,
-#    auth_methods: %w(password)
-#  }
+ set :ssh_options, {
+   keys: %w(/home/admin1/.ssh/private),
+   forward_agent: true,
+   auth_methods: %w(publickey password)
+ }
 #
 # The server-based syntax can be used to override options:
 # ------------------------------------
