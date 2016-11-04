@@ -2,35 +2,17 @@
 lock '3.6.1'
 
 set :application, 'problemset'
-
-#set :repo_url, 'https://github.com/mamilkew/wae-problemset.git'
-set :repo_url, 'https://github.com/st118247/WAE_2016_Project.git'
-#set :repo_url, 'git@github.com:st118247/WAE_2016_Project.git'
-#set :repo_url, 'git@vgl-ait.org:web16-02.git'
-
-
-set :passenger_restart_with_touch, true
-
 set :deploy_to, '/home/deploy/problemset'
+set :repo_url, 'https://github.com/st118247/WAE_2016_Project.git'
+set :passenger_restart_with_touch, true
+set :'rbenv_ruby', '2.3.1'
 
-set :scm, :git
+set :default_env, {
+    'http_proxy'  =>'http://192.41.170.23:3128',
+    'ftp_proxy'   =>'http://192.41.170.23:3128',
+    'https_proxy' =>'http://192.41.170.23:3128'
 
-set :rbenv_type, :user
-set :rbenv_ruby, '2.3.1'
-set :repo_tree, 'problemset'
-
-set :keep_releases, 5
-set :stages,['production']
-set :default_stage,'production'
-set :user, 'deploy'
-set :branch,'master'
-
-# Default value for :linked_files is []
-append :linked_files, 'config/database.yml', 'config/secrets.yml'
-
-# Default value for linked_dirs is []
-append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/system'
-
+}
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
@@ -61,4 +43,4 @@ append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/syst
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
 # Default value for keep_releases is 5
-
+# set :keep_releases, 5
