@@ -9,6 +9,28 @@ server 'web2.cs.ait.ac.th',
            forward_agent: true
        }
 
+
+role :app, %w{deploy@web2.cs.ait.ac.th}
+role :web, %w{deploy@web2.cs.ait.ac.th}
+role :db,  %w{deploy@web2.cs.ait.ac.th}, :primary => true
+
+set :default_env,{
+	'BAZOOKA_USER' => ENV['BAZOOKA_USER'],
+	
+	"http_proxy" => "http://192.41.170.23:3128",
+	"https_proxy" => "http://192.41.170.23:3128",
+	"ftp_proxy" => "http://192.41.170.23:3128",
+	"rsync_proxy" => "http://192.41.170.23:3128",
+	"no_proxy" => "localhost,127.0.0.1,localaddress,.localddmatin.com",
+
+	"HTTP_PROXY" => $http_proxy,
+	"HTTPS_PROXY" => $https_proxy,
+	"FTP_PROXY" => $ftp_proxy,
+	"RSYNC_PROXY" => $rsync_proxy,
+	"NO_PROXY" => $no_proxy
+}
+
+
 # server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.
