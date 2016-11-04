@@ -1,8 +1,12 @@
+set :branch, 'master'
+set :rails_env,'production'
+set :deploy_via, :remote_cache
+
 server 'web2.cs.ait.ac.th',
        user: 'deploy',
        roles: %w{app db web},
        ssh_options: {
-           forward_agent: false
+           forward_agent: true
        }
 
 # server-based syntax
