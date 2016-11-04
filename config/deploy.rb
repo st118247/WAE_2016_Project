@@ -4,8 +4,11 @@ lock '3.6.1'
 set :application, 'problemset'
 
 #set :repo_url, 'https://github.com/mamilkew/wae-problemset.git'
-#set :repo_url, 'https://github.com/st118247/WAE_2016_Project.git'
-set :repo_url, 'git@github.com:st118247/WAE_2016_Project.git'
+set :repo_url, 'https://github.com/st118247/WAE_2016_Project.git'
+#set :repo_url, 'git@github.com:st118247/WAE_2016_Project.git'
+#set :repo_url, 'git@vgl-ait.org:web16-02.git'
+
+
 set :passenger_restart_with_touch, true
 
 set :deploy_to, '/home/deploy/problemset'
