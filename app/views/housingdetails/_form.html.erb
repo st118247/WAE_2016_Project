@@ -1,5 +1,5 @@
 <% if housingdetail.versionid.present? then %>
-    <%= var_versionid = Housingdetail.where(category: housingdetail.category).maximum(:versionid)  %>
+    <% var_versionid = Housingdetail.where(category: housingdetail.category).maximum(:versionid)  %>
     <% housingdetail.versionid = var_versionid + 1 %>
 <% else housingdetail.versionid = 1 %>
 <% end %>
